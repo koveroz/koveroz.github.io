@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koveroz — сайты для бизнеса</title>
+<meta name="description" content="Koveroz делает сайты для кафе, ресторанов и компаний. Покажу демо вашего сайта бесплатно.">
+<link rel="icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --black:#000; --white:#fff; --grey:#8c8c8c; --dim:#5c5c5c; --line:#232323; --panel:#0c0c0c;
+  --font:"Onest",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font:400 17px/1.65 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--white);outline-offset:4px}
+::selection{background:var(--white);color:var(--black)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h2{font:700 clamp(36px,5.4vw,66px)/1.04 var(--font);letter-spacing:-.04em;max-width:16ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font:600 16px var(--font);padding:16px 26px;border:1.5px solid var(--white);border-radius:12px;transition:background .25s,color .25s,transform .25s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn.solid{background:var(--white);color:var(--black)}
+.btn.solid:hover{background:transparent;color:var(--white)}
+.btn.line:hover{background:var(--white);color:var(--black)}
+
+/* reveal on scroll (only when JS is on) */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- top ---------- */
+.top{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:2}
+.top img{width:40px;height:40px}
+.top a{font-weight:500;font-size:15px;text-decoration:none;border-bottom:1px solid var(--dim);padding-bottom:2px;transition:border-color .2s}
+.top a:hover{border-color:var(--white)}
+
+/* ---------- hero ---------- */
+.hero{min-height:calc(100svh - 84px);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:20px 0 90px}
+.name{font:800 clamp(56px,10vw,150px)/.92 var(--font);letter-spacing:-.06em}
+.lede{max-width:30ch;font-size:clamp(19px,2.1vw,25px);line-height:1.4;font-weight:500;margin-top:30px}
+.lede span{color:var(--grey)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.hero-l > *{opacity:0;animation:up .9s var(--ease) forwards}
+.hero-l > :nth-child(1){animation-delay:1.0s}
+.hero-l > :nth-child(2){animation-delay:1.15s}
+.hero-l > :nth-child(3){animation-delay:1.3s}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* animated logo */
+.mark{position:relative;justify-self:center;width:min(420px,38vw);aspect-ratio:1;perspective:900px}
+.mark svg{width:100%;height:100%;overflow:visible;transition:transform .5s var(--ease);will-change:transform}
+.mark .halo{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.10),transparent 70%);opacity:0;animation:fade 1.6s ease 1.2s forwards}
+@keyframes fade{to{opacity:1}}
+.k-top,.k-bot{opacity:0;transform-box:view-box}
+.k-top{transform:translate(9px,-7px);animation:kin .95s var(--ease) .25s forwards}
+.k-bot{transform:translate(-9px,7px);animation:kin .95s var(--ease) .25s forwards}
+@keyframes kin{to{opacity:1;transform:none}}
+.k-glint{stroke-dasharray:9 120;stroke-dashoffset:9;opacity:0;animation:glint 5s ease-in-out 1.3s infinite}
+@keyframes glint{0%{stroke-dashoffset:9;opacity:0}5%{opacity:1}32%{stroke-dashoffset:-70;opacity:1}38%,100%{stroke-dashoffset:-70;opacity:0}}
+
+
+/* ---------- try ---------- */
+.try{padding:130px 0}
+.try .grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:60px;align-items:center}
+.sub{color:var(--grey);max-width:40ch;margin:24px 0 42px}
+.try label{display:block;font:400 13px var(--mono);color:var(--grey);margin-bottom:8px}
+#biz{width:100%;background:transparent;border:0;border-bottom:1.5px solid #3c3c3c;border-radius:0;color:var(--white);font:600 clamp(26px,3vw,36px)/1.2 var(--font);letter-spacing:-.02em;padding:6px 0 12px;transition:border-color .25s}
+#biz::placeholder{color:#3a3a3a}
+#biz:focus{outline:none;border-color:var(--white)}
+.types{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 40px}
+.types button{background:transparent;color:var(--white);border:1.5px solid #333;border-radius:999px;font:500 15px var(--font);padding:9px 18px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.types button:hover{border-color:var(--white)}
+.types button[aria-pressed="true"]{background:var(--white);color:var(--black);border-color:var(--white)}
+.note{color:var(--dim);font-size:14px;margin-top:16px;max-width:40ch}
+
+.stage{position:relative;padding:0 0 60px}
+.laptop{width:100%;max-width:600px}
+.lap-screen{border:1.5px solid #333;border-bottom:0;border-radius:14px 14px 0 0;padding:10px 10px 0;background:#0a0a0a}
+.lap-view{aspect-ratio:16/10;border-radius:6px 6px 0 0;overflow:hidden;position:relative}
+.lap-base{height:14px;background:linear-gradient(#2a2a2a,#151515);border-radius:0 0 16px 16px;margin:0 -24px;position:relative}
+.lap-base::after{content:"";position:absolute;left:50%;top:0;width:90px;height:5px;margin-left:-45px;background:#0d0d0d;border-radius:0 0 6px 6px}
+.phone{position:absolute;right:-10px;bottom:0;width:36%;max-width:220px;aspect-ratio:9/19;border:1.5px solid #3a3a3a;border-radius:34px;padding:7px;background:#0a0a0a;box-shadow:-30px 30px 80px -20px rgba(0,0,0,.95)}
+.phone::before{content:"";position:absolute;top:13px;left:50%;width:60px;height:16px;margin-left:-30px;border-radius:10px;background:#000;z-index:3}
+.ph-view{height:100%;border-radius:27px;overflow:hidden;position:relative}
+
+/* mini sites (shared theme vars) */
+.site{background:var(--s-bg);color:var(--s-fg);height:100%;transition:background .5s,color .5s;font-family:var(--font)}
+.swap{transition:opacity .25s ease}
+.swap.fade{opacity:0}
+.s-img{background:#333 center/cover;transition:background-image .3s}
+.s-btn{background:var(--s-acc);color:var(--s-on);border-radius:8px;font-weight:600;text-align:center;transition:background .5s,color .5s}
+.s-chip{border:1px solid var(--s-line);border-radius:999px;white-space:nowrap}
+.s-chip.on{background:var(--s-fg);color:var(--s-bg);border-color:var(--s-fg)}
+.s-muted{opacity:.6}
+
+/* desktop mini site */
+.d{display:flex;flex-direction:column;font-size:9px}
+.d-nav{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;border-bottom:1px solid var(--s-line)}
+.d-nav b{font-size:11px;font-weight:700}
+.d-nav span{display:flex;gap:14px}
+.d-hero{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;padding:16px 18px;align-items:center}
+.d-hero h4{font:700 26px/1 var(--font);letter-spacing:-.03em;margin-bottom:6px;word-break:break-word}
+.d-hero p{margin-bottom:10px}
+.d-hero .s-btn{display:inline-block;padding:7px 12px;font-size:9px}
+.d-hero .s-img{aspect-ratio:4/3;border-radius:8px}
+.d-rate{display:flex;gap:6px;align-items:center;margin-top:10px}
+.d-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 18px}
+.d-cards div .s-img{aspect-ratio:1;border-radius:6px;margin-bottom:4px}
+.d-cards b{display:block;font-weight:600}
+
+/* phone mini site — auto-scrolls */
+.m{font-size:11px}
+.m-scroll{animation:pscroll 14s ease-in-out infinite alternate;animation-delay:1.5s}
+.phone:hover .m-scroll{animation-play-state:paused}
+@keyframes pscroll{0%,12%{transform:translateY(0)}88%,100%{transform:translateY(var(--ph-scroll,-200px))}}
+.m-nav{display:flex;justify-content:space-between;align-items:center;padding:30px 14px 8px;font-weight:700;font-size:12px}
+.m-nav i{width:14px;height:8px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+.m-hero{margin:0 8px;height:170px;border-radius:14px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;color:#fff;overflow:hidden}
+.m-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.75))}
+.m-hero *{position:relative}
+.m-hero h4{font:700 22px/1 var(--font);letter-spacing:-.03em;word-break:break-word;margin-bottom:4px}
+.m-hero p{font-size:10px;opacity:.85}
+.m-rate{display:flex;justify-content:space-between;padding:10px 14px 4px;font-size:10px}
+.m .s-btn{margin:6px 8px 10px;padding:10px;font-size:11px}
+.m-chips{display:flex;gap:6px;padding:0 10px 10px;overflow:hidden;font-size:10px}
+.m-chips .s-chip{padding:4px 10px}
+.m-items{padding:0 10px}
+.m-items div{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--s-line)}
+.m-items .s-img{width:44px;height:44px;border-radius:8px}
+.m-items b{display:block;font-weight:600;font-size:11px}
+.m-items small{font-size:9.5px}
+.m-foot{padding:14px;font-size:10px}
+.m-wa{position:absolute;right:12px;bottom:14px;width:34px;height:34px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.35);z-index:2}
+.m-wa svg{width:18px;height:18px;fill:#fff}
+
+/* ---------- sections ---------- */
+section.block{padding:120px 0;border-top:1px solid var(--line)}
+.why-list,.steps{margin-top:64px}
+.why-list div{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:baseline;padding:34px 0;border-top:1px solid var(--line)}
+.why-list h3{font:600 clamp(24px,2.8vw,34px)/1.15 var(--font);letter-spacing:-.025em}
+.why-list p{color:var(--grey);max-width:44ch}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+.intro p{color:var(--grey);max-width:44ch}
+.intro strong{color:var(--white);font-weight:500}
+.get{margin-top:72px;display:grid;grid-template-columns:1fr 1fr;column-gap:80px}
+.get div{padding:30px 0;border-top:1px solid var(--line)}
+.get h3{font:600 23px/1.2 var(--font);letter-spacing:-.02em;margin-bottom:10px}
+.get p{color:var(--grey);max-width:40ch;font-size:16px}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr 1.1fr;gap:30px;align-items:baseline;padding:32px 0;border-top:1px solid var(--line)}
+.steps li::before{content:'0' counter(s);font:500 14px var(--mono);color:var(--dim)}
+.steps h3{font:600 26px/1.15 var(--font);letter-spacing:-.02em}
+.steps p{color:var(--grey);max-width:42ch}
+.steps .free{color:var(--white)}
+
+/* contact */
+.contact{padding:140px 0 40px;border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(46px,8vw,112px);max-width:none;letter-spacing:-.05em}
+.say{color:var(--grey);max-width:44ch;margin:28px 0 56px;font-size:19px}
+.links{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.links a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:32px 28px;text-decoration:none;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:background .3s}
+.links a:first-child{padding-left:0}
+.links a:last-child{border-right:0;padding-right:0}
+.links a:hover{background:#0a0a0a}
+.links small{display:block;color:var(--grey);font:400 13px var(--mono);margin-bottom:8px}
+.links .big{display:block;font:700 clamp(24px,2.6vw,34px)/1 var(--font);letter-spacing:-.03em;transition:transform .3s var(--ease)}
+.links a:hover .big{transform:translateX(6px)}
+.links svg{width:28px;height:28px;flex:none;opacity:.8}
+footer{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:44px 0 10px;color:var(--dim);font-size:14px}
+footer img{width:28px;height:28px}
+
+.dock{display:none}
+
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;gap:10px;padding-top:0}
+  .mark{width:min(240px,62vw);order:-1;justify-self:start}
+  .try .grid{grid-template-columns:1fr}
+  .intro,.get{grid-template-columns:1fr}
+  .intro{gap:24px}
+  .why-list div{grid-template-columns:1fr;gap:10px}
+  .steps li{grid-template-columns:44px 1fr;gap:6px 14px}
+  .steps li::before{grid-row:span 2}
+  .links{grid-template-columns:1fr}
+  .links a{padding-left:0;padding-right:0;border-right:0}
+  section.block{padding:90px 0}
+  .try{padding:90px 0}
+  .dock{display:flex;position:fixed;left:16px;right:16px;bottom:14px;z-index:30;justify-content:center;padding:16px;background:var(--white);color:var(--black);font:600 16px var(--font);text-decoration:none;border-radius:12px;transform:translateY(140%);transition:transform .4s var(--ease);box-shadow:0 10px 30px rgba(0,0,0,.6)}
+  .dock.show{transform:none}
+}
+@media(max-width:600px){
+  body{font-size:16px}
+  .actions .btn{flex:1 1 100%}
+  .stage{padding-bottom:40px}
+  .phone{width:42%;right:-6px;border-radius:26px;padding:5px}
+  .ph-view{border-radius:21px}
+  .phone::before{top:9px;width:44px;height:12px;margin-left:-22px}
+  .d{font-size:6px}.d-nav b{font-size:8px}.d-hero h4{font-size:15px}.d-hero .s-btn{font-size:6px;padding:4px 7px}
+  .d-nav,.d-hero{padding-left:10px;padding-right:10px}.d-cards{padding:0 10px;gap:6px}
+  .m{font-size:8px}.m-nav{padding:22px 10px 6px;font-size:9px}.m-hero{height:110px}.m-hero h4{font-size:15px}
+  .m-items div{grid-template-columns:30px 1fr}.m-items .s-img{width:30px;height:30px}.m-items b{font-size:8.5px}
+  .m .s-btn{font-size:8.5px;padding:7px}.m-wa{width:24px;height:24px}.m-wa svg{width:13px;height:13px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;animation-iteration-count:1!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <img src="logo.jpg" alt="Koveroz">
+    <a href="#contact">Написать мне</a>
+  </div>
+
+  <header class="hero" id="hero">
+    <div class="hero-l">
+      <h1 class="name">Koveroz</h1>
+      <p class="lede">Веб-разработчик. Делаю сайты для кафе, ресторанов и компаний. <span>Быстрые, красивые и с заявками прямо в ваш WhatsApp.</span></p>
+      <div class="actions">
+        <a class="btn solid" href="#try">Посмотреть свой сайт</a>
+        <a class="btn line" href="https://wa.me/77028069558?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%81%D0%B0%D0%B9%D1%82" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="mark" id="mark" aria-hidden="true">
+      <div class="halo"></div>
+      <svg viewBox="30 34 92 82" id="ksvg">
+        <defs>
+          <linearGradient id="streak" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset=".5" stop-color="#fff"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- traced from the avatar: the K is two pieces split by the cut -->
+        <path class="k-top" d="M39.6 88.5 L40.6 88.4 L45.4 82.5 L49.2 80.0 L71.4 73.4 L82.0 63.1 L92.4 62.8 L112.4 42.0 L85.5 41.9 L60.2 67.8 L59.2 67.0 L59.0 42.1 L47.1 42.0 L39.5 50.4 Z" fill="#fff"/>
+        <path class="k-bot" d="M108.6 107.9 L79.0 77.2 L79.2 76.0 L88.6 66.8 L88.4 65.4 L83.6 66.0 L73.1 76.0 L50.1 83.1 L45.1 88.0 L39.6 97.5 L39.5 106.9 L40.4 108.4 L59.0 108.1 L59.4 87.0 L60.4 85.8 L62.2 85.4 L85.8 108.4 L107.9 108.5 Z" fill="#fff"/>
+        <path class="k-glint" d="M39.6 92.6 L45.2 85.3 L49.6 81.6 L72.2 74.8 L82.8 64.6 L88.6 64.4 L93.5 62.6" fill="none" stroke="#fff" stroke-width="1.1" stroke-linecap="round" filter="url(#glow)"/>
+      </svg>
+    </div>
+  </header>
+</div>
+
+
+<section class="try" id="try">
+  <div class="wrap grid">
+    <div class="rv">
+      <h2>Посмотрите на свой сайт</h2>
+      <p class="sub">Впишите название и выберите, чем вы занимаетесь. Справа появится ваш сайт на компьютере и на телефоне.</p>
+      <label for="biz">название вашего бизнеса</label>
+      <input id="biz" type="text" maxlength="24" placeholder="Например, Ромашка" autocomplete="off">
+      <div class="types" role="group" aria-label="Тип бизнеса">
+        <button type="button" data-t="cafe" aria-pressed="true">Кафе</button>
+        <button type="button" data-t="rest" aria-pressed="false">Ресторан</button>
+        <button type="button" data-t="coffee" aria-pressed="false">Кофейня</button>
+        <button type="button" data-t="barber" aria-pressed="false">Барбершоп</button>
+        <button type="button" data-t="biz" aria-pressed="false">Компания</button>
+      </div>
+      <a class="btn solid" id="want" href="https://wa.me/77028069558" target="_blank" rel="noopener">Хочу такой сайт</a>
+      <p class="note">Это набросок. Настоящий сайт я соберу под ваше меню, фото и стиль.</p>
+    </div>
+
+    <div class="stage rv" aria-label="Предпросмотр сайта">
+      <div class="laptop">
+        <div class="lap-screen"><div class="lap-view"><div class="site d swap" id="dsite"></div></div></div>
+        <div class="lap-base"></div>
+      </div>
+      <div class="phone">
+        <div class="ph-view">
+          <div class="site m" id="msite-wrap"><div class="m-scroll swap" id="msite"></div></div>
+          <span class="m-wa"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="rv">Почему со мной просто</h2>
+    <div class="why-list">
+      <div class="rv"><h3>Пишу код сам</h3><p>Без конструкторов вроде Tilda и Wix. Поэтому сайт лёгкий, открывается мгновенно и не похож на тысячи других.</p></div>
+      <div class="rv"><h3>Сайт принадлежит вам</h3><p>Адрес сайта и все файлы оформляются на вас. Не нужно каждый месяц платить за конструктор.</p></div>
+      <div class="rv"><h3>Сначала показываю, потом обсуждаем</h3><p>Демо вашего сайта я делаю бесплатно. Не понравится — вы ничего не должны.</p></div>
+      <div class="rv"><h3>Всегда на связи</h3><p>Отвечаю в течение дня в WhatsApp или Telegram. Нужно поменять цены или фото — просто напишите.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="intro rv">
+      <h2>Сайт, который работает за вас</h2>
+      <p>Каждый сайт я собираю с нуля под конкретный бизнес. <strong>Ваши гости видят меню, цены и фото</strong> с телефона за пару секунд и сразу оставляют заявку.</p>
+    </div>
+    <div class="get">
+      <div class="rv"><h3>Меню, которое легко обновить</h3><p>Цены и блюда меняются за минуту. Не нужно перепечатывать и пересылать фото меню.</p></div>
+      <div class="rv"><h3>Заявки сразу в WhatsApp</h3><p>Бронь стола, банкет или заказ приходят вам в чат с именем, датой и количеством гостей.</p></div>
+      <div class="rv"><h3>Отлично выглядит на телефоне</h3><p>Почти все гости открывают сайт со смартфона. Под него я и проектирую в первую очередь.</p></div>
+      <div class="rv"><h3>Вас находят в поиске</h3><p>Сайт и карточка на картах: гости видят адрес, часы работы и фото.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="rv">Как это происходит</h2>
+    <ol class="steps">
+      <li class="rv"><h3>Вы пишете</h3><p>Пара сообщений о вашем заведении или компании. Ссылки на Instagram достаточно.</p></li>
+      <li class="rv"><h3>Я делаю демо</h3><p>За 1–2 дня собираю вашу версию сайта с вашим меню и фото. <span class="free">Это бесплатно.</span></p></li>
+      <li class="rv"><h3>Доводим до идеала</h3><p>Меняем тексты, фото и цвета, пока всё не будет так, как вы хотите.</p></li>
+      <li class="rv"><h3>Запускаем</h3><p>Сайт на вашем адресе в интернете, заявки идут в WhatsApp.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Напишите мне</h2>
+    <p class="say rv">Расскажите про свой бизнес, и я покажу, как может выглядеть ваш сайт. Отвечаю в течение дня.</p>
+    <div class="links rv">
+      <a href="https://instagram.com/koverozz" target="_blank" rel="noopener">
+        <span><small>instagram</small><span class="big">@koverozz</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+      </a>
+      <a href="https://t.me/Kaveroz" target="_blank" rel="noopener">
+        <span><small>telegram</small><span class="big">@Kaveroz</span></span>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.9c.9-.3 1.6.2 1.4 1.4z"/></svg>
+      </a>
+      <a href="https://wa.me/77028069558?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%81%D0%B0%D0%B9%D1%82" target="_blank" rel="noopener">
+        <span><small>whatsapp</small><span class="big">Написать</span></span>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+      </a>
+    </div>
+    <footer><img src="logo.jpg" alt=""><span>© 2026 Koveroz</span></footer>
+  </div>
+</section>
+
+<a class="dock" id="dock" href="https://wa.me/77028069558?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%81%D0%B0%D0%B9%D1%82" target="_blank" rel="noopener">Написать в WhatsApp</a>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const esc = v => String(v).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const U = (id, w = 600) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+
+
+  /* ---------- logo tilt follows the cursor ---------- */
+  const svg = $('ksvg'), mark = $('mark');
+  if (matchMedia('(hover:hover)').matches) {
+    $('hero').addEventListener('mousemove', e => {
+      const r = mark.getBoundingClientRect();
+      const x = (e.clientX - (r.left + r.width/2)) / innerWidth, y = (e.clientY - (r.top + r.height/2)) / innerHeight;
+      svg.style.transform = `rotateY(${x*18}deg) rotateX(${-y*18}deg)`;
+    });
+    $('hero').addEventListener('mouseleave', () => svg.style.transform = '');
+  }
+
+  /* ---------- live preview: one business, two screens ---------- */
+  const T = {
+    cafe:   {label:'кафе', def:'Ромашка', bg:'#f6f1ea', fg:'#2a211b', acc:'#2a211b', on:'#f6f1ea', line:'rgba(42,33,27,.14)',
+             hero:'1554118811-1e0d58224f24', tag:'Уютное кафе для всей семьи', btn:'Забронировать стол', nav:['Меню','Бронь','Контакты'],
+             rate:'4.9 · 320 отзывов', hours:'Ежедневно 9:00–23:00', chips:['Завтраки','Горячее','Салаты','Десерты'],
+             items:[['Завтрак дня','до 12:00','1504674900247-0877df9cc836'],['Пицца маргарита','хит','1565299624946-b28f40a0ae38'],['Боул с лососем','новинка','1546069901-ba9599a7e63c'],['Вафли с ягодами','десерт','1551024601-bec78aea704b']]},
+    rest:   {label:'ресторан', def:'Гранд Холл', bg:'#0f0d0b', fg:'#f3ece2', acc:'#d4a95a', on:'#1a140c', line:'rgba(243,236,226,.14)',
+             hero:'1519167758481-83f550bb49b3', tag:'Банкеты и праздники до 200 гостей', btn:'Заявка на банкет', nav:['Залы','Меню','Банкеты'],
+             rate:'4.8 · 540 отзывов', hours:'Ежедневно 12:00–02:00', chips:['Залы','Банкеты','Меню','Фото'],
+             items:[['Большой зал','до 200 гостей','1414235077428-338989a2e8c0'],['Стейк рибай','от шефа','1544025162-d76694265947'],['Малый зал','до 60 гостей','1517248135467-4c7edcad34c4'],['VIP-кабинет','до 15 гостей','1555396273-367ea4eb4db5']]},
+    coffee: {label:'кофейня', def:'Brew Point', bg:'#141210', fg:'#f5efe8', acc:'#c89b6d', on:'#141210', line:'rgba(245,239,232,.14)',
+             hero:'1495474472287-4d71bcdd2085', tag:'Свежая обжарка и десерты', btn:'Заказать заранее', nav:['Кофе','Десерты','Где мы'],
+             rate:'5.0 · 210 отзывов', hours:'Ежедневно 8:00–22:00', chips:['Кофе','Чай','Десерты','С собой'],
+             items:[['Капучино','250 мл','1509042239860-f550ce710b93'],['Фильтр-кофе','сорт недели','1495474472287-4d71bcdd2085'],['Чизкейк','каждый день','1551024601-bec78aea704b'],['Наш зал','12 мест','1554118811-1e0d58224f24']]},
+    barber: {label:'барбершоп', def:'Blade', bg:'#0c0c0c', fg:'#eeeeee', acc:'#ffffff', on:'#0c0c0c', line:'rgba(255,255,255,.14)',
+             hero:'1503951914875-452162b0f3f1', tag:'Мужские стрижки и бритьё', btn:'Записаться онлайн', nav:['Услуги','Мастера','Запись'],
+             rate:'4.9 · 860 отзывов', hours:'Ежедневно 10:00–21:00', chips:['Стрижка','Борода','Комплекс','Детская'],
+             items:[['Стрижка','45 мин','1585747860715-2ba37e788b70'],['Борода','30 мин','1622286342621-4bd786c2447c'],['Стрижка + борода','1 час','1521590832167-7bcbfaa6381f'],['Королевское бритьё','40 мин','1599351431202-1e0f0137899a']]},
+    biz:    {label:'компания', def:'Nova Group', bg:'#f4f6f8', fg:'#111827', acc:'#1f4fd1', on:'#ffffff', line:'rgba(17,24,39,.12)',
+             hero:'1497366216548-37526070297c', tag:'Надёжный партнёр для вашего бизнеса', btn:'Оставить заявку', nav:['Услуги','Проекты','О нас'],
+             rate:'Работаем с 2015 года', hours:'Пн–Пт 9:00–18:00', chips:['Услуги','Проекты','Команда','Контакты'],
+             items:[['Консалтинг','для бизнеса','1460925895917-afdab827c52f'],['Команда','12 специалистов','1522071820081-009f0129c71c'],['Офис','в центре города','1497366811353-6870744d04b2'],['Переговоры','онлайн и офлайн','1600880292203-757bb62b4baf']]}
+  };
+  Object.values(T).forEach(t => [t.hero, ...t.items.map(i => i[2])].forEach(id => { const im = new Image(); im.src = U(id, 300); }));
+
+  const inp = $('biz'), d = $('dsite'), m = $('msite'), mw = $('msite-wrap'), want = $('want');
+  const btns = [...document.querySelectorAll('.types button')];
+  let cur = 'cafe';
+  const star = '<svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor" style="vertical-align:-1px"><path d="M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"/></svg>';
+
+  function paint(){
+    const t = T[cur], name = esc(inp.value.trim() || t.def);
+    [d.parentElement, mw].forEach(el => {
+      el.style.setProperty('--s-bg', t.bg); el.style.setProperty('--s-fg', t.fg);
+      el.style.setProperty('--s-acc', t.acc); el.style.setProperty('--s-on', t.on); el.style.setProperty('--s-line', t.line);
+    });
+    d.parentElement.classList.add('site'); d.parentElement.style.background = t.bg;
+
+    d.innerHTML = `
+      <div class="d-nav"><b>${name}</b><span>${t.nav.map(n => `<span>${n}</span>`).join('')}</span></div>
+      <div class="d-hero">
+        <div><h4>${name}</h4><p class="s-muted">${t.tag}</p><span class="s-btn">${t.btn}</span>
+          <div class="d-rate">${star}<span>${t.rate}</span></div></div>
+        <div class="s-img" style="background-image:url('${U(t.hero, 600)}')"></div>
+      </div>
+      <div class="d-cards">${t.items.map(i => `<div><div class="s-img" style="background-image:url('${U(i[2], 300)}')"></div><b>${i[0]}</b><span class="s-muted">${i[1]}</span></div>`).join('')}</div>`;
+
+    m.innerHTML = `
+      <div class="m-nav"><span>${name}</span><i></i></div>
+      <div class="m-hero s-img" style="background-image:url('${U(t.hero, 500)}')"><h4>${name}</h4><p>${t.tag}</p></div>
+      <div class="m-rate"><span>${star} ${t.rate}</span></div>
+      <div class="s-btn">${t.btn}</div>
+      <div class="m-chips">${t.chips.map((c, i) => `<span class="s-chip${i ? '' : ' on'}">${c}</span>`).join('')}</div>
+      <div class="m-items">${t.items.map(i => `<div><span class="s-img" style="background-image:url('${U(i[2], 200)}')"></span><span><b>${i[0]}</b><small class="s-muted">${i[1]}</small></span></div>`).join('')}</div>
+      <div class="m-foot s-muted">${t.hours}</div>`;
+
+    // scroll distance for the phone's auto-scroll
+    requestAnimationFrame(() => {
+      const extra = m.scrollHeight - mw.clientHeight;
+      m.style.setProperty('--ph-scroll', `${-Math.max(0, extra)}px`);
+    });
+    want.href = 'https://wa.me/77028069558?text=' + encodeURIComponent(`Здравствуйте! Хочу сайт для «${inp.value.trim() || t.def}» (${t.label}).`);
+  }
+  btns.forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.t === cur) return;
+    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    cur = b.dataset.t; d.classList.add('fade'); m.classList.add('fade');
+    setTimeout(() => { paint(); d.classList.remove('fade'); m.classList.remove('fade'); }, 250);
+  }));
+  inp.addEventListener('input', paint);
+  addEventListener('resize', paint);
+  paint();
+
+  /* ---------- reveal on scroll + sticky WhatsApp on phones ---------- */
+  const rv = [...document.querySelectorAll('.rv')], dock = $('dock'), hero = $('hero'), contact = $('contact');
+  function onScroll(){
+    const h = innerHeight;
+    rv.forEach(el => { if (!el.classList.contains('in') && el.getBoundingClientRect().top < h * .9) el.classList.add('in'); });
+    dock.classList.toggle('show', hero.getBoundingClientRect().bottom < 0 && contact.getBoundingClientRect().top > h * .85);
+  }
+  addEventListener('scroll', onScroll, {passive: true}); addEventListener('resize', onScroll); onScroll();
+})();
+</script>
+</body>
+</html>
