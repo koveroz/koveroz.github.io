@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Меню — кафе «Ромашка» (демо)</title>
+<meta name="description" content="Демо QR-меню от Koveroz: меню кафе с фото и ценами, русский и казахский.">
+<meta name="theme-color" content="#f7f2ea">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f2ea;--card:#fffdf9;--ink:#2a211b;--muted:#8b7d70;--line:#e8dfd2;--acc:#2a211b;--hit:#c2552d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.45 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:90px}
+.wrap{max-width:560px;margin:0 auto}
+header{padding:22px 18px 10px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+header h1{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+header p{color:var(--muted);font-size:14px;margin-top:4px}
+.lang{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;flex:none}
+.lang button{background:none;border:0;font:600 13px "Onest",sans-serif;padding:7px 12px;color:var(--ink);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.hero{margin:6px 18px 4px;height:150px;border-radius:18px;background:#ccc url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=70") center/cover;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55))}
+.hero span{position:absolute;left:14px;bottom:12px;color:#fff;font-weight:600;font-size:14px;z-index:1}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0 10px;border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:0 18px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;text-decoration:none;color:var(--ink);border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:600;font-size:14px;transition:background .2s,color .2s,border-color .2s}
+.tabs a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+section{padding:18px 18px 4px;scroll-margin-top:64px}
+section h2{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.item{display:grid;grid-template-columns:1fr 92px;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:10px}
+.item h3{font-size:16px;font-weight:700;line-height:1.2}
+.item p{color:var(--muted);font-size:13px;margin:4px 0 8px}
+.price{font-weight:800;font-size:16px}
+.tag{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;color:#fff;background:var(--hit);border-radius:6px;padding:2px 6px;vertical-align:2px}
+.ph{width:92px;height:92px;border-radius:12px;background:#ddd center/cover}
+.call{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));max-width:536px;margin:0 auto;display:flex;gap:8px;z-index:10}
+.call a{flex:1;text-align:center;text-decoration:none;font-weight:700;padding:15px;border-radius:14px}
+.call .wa{background:#25d366;color:#04210f}
+.call .tel{background:var(--ink);color:var(--bg);flex:.6}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+footer a{color:inherit}
+.demo{background:#2a211b;color:#f7f2ea;text-align:center;font-size:12px;padding:7px 12px}
+.demo a{color:#fff;font-weight:700}
+</style>
+</head>
+<body>
+<div class="demo">Демо QR-меню от <a href="https://koveroz.github.io">Koveroz</a> — такое сделаю для вашего кафе</div>
+<div class="wrap">
+  <header>
+    <div><h1 data-i="title">Кафе «Ромашка»</h1><p data-i="hours">Ежедневно 9:00–23:00 · ул. Примерная, 1</p></div>
+    <div class="lang" role="group" aria-label="Язык"><button data-l="ru" aria-pressed="true">RU</button><button data-l="kz" aria-pressed="false">KZ</button></div>
+  </header>
+  <div class="hero"><span data-i="welcome">Добро пожаловать! Выберите блюдо и позовите официанта</span></div>
+  <nav><div class="tabs" id="tabs"></div></nav>
+  <main id="menu"></main>
+  <footer><span data-i="foot">Цены указаны в тенге.</span> · <a href="https://koveroz.github.io">Сделано Koveroz</a></footer>
+</div>
+<div class="call">
+  <a class="tel" href="tel:+77000000000" data-i="call">Позвонить</a>
+  <a class="wa" href="https://wa.me/77000000000" data-i="order">Заказать в WhatsApp</a>
+</div>
+<script>
+const U=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=300&q=70`;
+const T={
+  ru:{title:'Кафе «Ромашка»',hours:'Ежедневно 9:00–23:00 · ул. Примерная, 1',welcome:'Добро пожаловать! Выберите блюдо и позовите официанта',foot:'Цены указаны в тенге.',call:'Позвонить',order:'Заказать в WhatsApp',hit:'Хит',new:'Новинка'},
+  kz:{title:'«Ромашка» кафесі',hours:'Күн сайын 9:00–23:00 · Мысал көшесі, 1',welcome:'Қош келдіңіз! Тағамды таңдап, даяшыны шақырыңыз',foot:'Бағалар теңгемен көрсетілген.',call:'Қоңырау шалу',order:'WhatsApp арқылы тапсырыс',hit:'Хит',new:'Жаңа'}
+};
+const M=[
+  {id:'br',ru:'Завтраки',kz:'Таңғы ас',items:[
+    {ru:['Завтрак «Ромашка»','Яйца, сосиски, овощи, тост'],kz:['«Ромашка» таңғы асы','Жұмыртқа, шұжық, көкөніс, тост'],p:2900,img:'1504674900247-0877df9cc836',tag:'hit'}]},
+  {id:'hot',ru:'Горячее',kz:'Ыстық тағамдар',items:[
+    {ru:['Пицца Маргарита','Томаты, моцарелла, базилик'],kz:['Маргарита пиццасы','Қызанақ, моцарелла, райхан'],p:3200,img:'1565299624946-b28f40a0ae38',tag:'hit'},
+    {ru:['Стейк из говядины','Овощи гриль, соус'],kz:['Сиыр етінен стейк','Грильдегі көкөніс, тұздық'],p:6900,img:'1544025162-d76694265947'},
+    {ru:['Боул с лососем','Рис, авокадо, огурец, кунжут'],kz:['Лосось қосылған боул','Күріш, авокадо, қияр, күнжіт'],p:3900,img:'1546069901-ba9599a7e63c',tag:'new'}]},
+  {id:'drinks',ru:'Напитки',kz:'Сусындар',items:[
+    {ru:['Капучино','250 мл'],kz:['Капучино','250 мл'],p:1200,img:'1509042239860-f550ce710b93'},
+    {ru:['Фильтр-кофе','Сорт недели, 300 мл'],kz:['Фильтр-кофе','Апта сорты, 300 мл'],p:1000,img:'1495474472287-4d71bcdd2085'}]},
+  {id:'des',ru:'Десерты',kz:'Десерттер',items:[
+    {ru:['Пончики с глазурью','3 шт., шоколад и посыпка'],kz:['Глазурьлі пончиктер','3 дана, шоколад пен себу'],p:1800,img:'1551024601-bec78aea704b',tag:'new'}]}
+];
+let L='ru';
+const fmt=n=>n.toLocaleString('ru-RU').replace(/ /g,' ')+' ₸';
+function render(){
+  document.documentElement.lang=L==='kz'?'kk':'ru';
+  document.querySelectorAll('[data-i]').forEach(e=>e.textContent=T[L][e.dataset.i]);
+  const tabs=document.getElementById('tabs'),menu=document.getElementById('menu');
+  tabs.replaceChildren(...M.map((c,i)=>{const a=document.createElement('a');a.href='#'+c.id;a.textContent=c[L];if(!i)a.className='on';return a}));
+  menu.replaceChildren(...M.map(c=>{
+    const s=document.createElement('section');s.id=c.id;
+    const h=document.createElement('h2');h.textContent=c[L];s.append(h);
+    c.items.forEach(it=>{
+      const d=document.createElement('div');d.className='item';
+      const t=document.createElement('div');
+      const h3=document.createElement('h3');h3.textContent=it[L][0];
+      if(it.tag){const g=document.createElement('span');g.className='tag';g.textContent=T[L][it.tag];h3.append(g)}
+      const p=document.createElement('p');p.textContent=it[L][1];
+      const pr=document.createElement('div');pr.className='price';pr.textContent=fmt(it.p);
+      t.append(h3,p,pr);
+      const ph=document.createElement('div');ph.className='ph';ph.style.backgroundImage=`url("${U(it.img)}")`;
+      d.append(t,ph);s.append(d);
+    });
+    return s;
+  }));
+  spy.last=null; spy();
+}
+function spy(){
+  const links=[...document.querySelectorAll('.tabs a')];
+  let cur=links[0];
+  M.forEach((c,i)=>{const el=document.getElementById(c.id);if(el&&el.getBoundingClientRect().top<120)cur=links[i]});
+  if(cur===spy.last)return; spy.last=cur;
+  links.forEach(a=>a.classList.toggle('on',a===cur));
+  const tabs=document.getElementById('tabs');
+  if(cur)tabs.scrollTo({left:cur.offsetLeft-tabs.clientWidth/2+cur.clientWidth/2,behavior:'smooth'});
+}
+addEventListener('scroll',spy,{passive:true});
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{L=b.dataset.l;document.querySelectorAll('.lang button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+render();
+</script>
+</body>
+</html>
